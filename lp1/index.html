@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UP Rent a Car - Aluguel de Carros na Flórida</title>
+    <meta name="description" content="Alugue seu carro com a locadora Top 1 para brasileiros na Flórida. Sem filas, sem IOF e sem caução. Faça sua reserva agora.">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary-color: #ff4a01;
+            --secondary-color: #41165e;
+            --light-bg: #f5f5f5;
+            --text-color: #191919;
+            --white: #fff;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            color: var(--text-color);
+            line-height: 1.6;
+            margin: 0;
+            padding: 0;
+            background-color: var(--light-bg);
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Hero Section */
+        .hero {
+            display: flex;
+            min-height: 100vh;
+        }
+
+        .hero-image {
+            flex: 1;
+            background: url('header.png') no-repeat center center/cover;
+            position: relative;
+        }
+
+        .hero-logo {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            max-width: 150px;
+            z-index: 1;
+        }
+
+        .hero-content {
+            flex: 1;
+            background: var(--secondary-color);
+            color: var(--white);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 60x;
+        }
+
+        .hero h1 {
+            font-size: 3em;
+            font-weight: 800;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary-color);
+        }
+
+        .hero p {
+            font-size: 1.2em;
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto 50px;
+        }
+
+        .cta-button {
+            display: inline-block;
+            background-color: var(--primary-color);
+            color: var(--white);
+            padding: 15px 30px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+        }
+        
+        .cta-button:hover {
+            background-color: #e64201;
+        }
+
+        .price-highlight {
+            font-size: 1.5em;
+            color: var(--primary-color);
+            font-weight: bold;
+        }
+
+        /* Diferenciais Section */
+        .diferenciais {
+            padding: 80px 0;
+        }
+        
+        .diferenciais h2, .sobre-nos h2, .depoimentos h2, .contato h2 {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 20px;
+        }
+
+        .diferenciais h2 span {
+            color: var(--primary-color);
+        }
+
+        .diferenciais-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            text-align: center;
+        }
+
+        .diferencial-card {
+            background-color: var(--white);
+            border: 2px solid #ccc;
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .diferencial-card img {
+            max-width: 70px;
+            margin-bottom: 15px;
+        }
+        
+        .diferencial-card h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        /* Testimonials Section */
+        .depoimentos {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            padding: 80px 0;
+            text-align: center;
+        }
+
+        /* Form Section */
+        .contato {
+            padding: 80px 0;
+        }
+
+        .form-box {
+            background-color: var(--white);
+            padding: 40px;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .form-box h3 {
+            font-size: 2em;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .form-group input, .form-group select {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-family: inherit;
+        }
+
+        .form-group input[type="checkbox"] {
+            width: auto;
+        }
+
+        .form-group input[type="checkbox"] + label {
+            display: inline;
+            font-weight: normal;
+            margin-bottom: 0;
+            margin-left: 5px;
+        }
+
+        .form-group label[for="aceite"] {
+            font-size: 0.8em;
+            font-weight: normal;
+        }
+        
+        .form-box .cta-button {
+            width: 100%;
+            display: block;
+            box-sizing: border-box;
+        }
+
+        /* Footer */
+        .footer {
+            background-color: var(--secondary-color);
+            color: var(--white);
+            text-align: center;
+            padding: 20px 0;
+        }
+        
+        .footer p {
+            margin: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 100px 0;
+            }
+            .hero h1 {
+                font-size: 2em;
+            }
+            .hero p {
+                font-size: 1em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-image">
+            <img src="logo.png" alt="UP Rent a Car Logo" class="hero-logo">
+        </div>
+        <div class="hero-content">
+            <div class="container">
+                <h1>Alugue seu carro com a locadora número <span>1</span> dos brasileiros na Flórida</h1>
+                <p>A UP Rent a Car preparou para você o melhor serviço de aluguel de carros para sua viagem. <br> Modelos a partir de <span class="price-highlight">$49/dia.</span></p>
+                <a href="https://api.whatsapp.com/send?phone=13216100447&text=Olá, gostaria de alugar um carro!" target="_blank" class="cta-button">QUERO RESERVAR MEU CARRO</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="diferenciais">
+            <div class="container">
+                <h2>RÁPIDO E FÁCIL, SEM BUROCRACIAS</h2>
+                <div class="diferenciais-grid">
+                    <div class="diferencial-card">
+                        <img src="https://d9hhrg4mnvzow.cloudfront.net/lp.uprentcar.com/contrate/41073522-fila_1050050000000000000028.png" alt="Ícone sem filas">
+                        <h3>Sem filas para retirar seu carro</h3>
+                    </div>
+                    <div class="diferencial-card">
+                        <img src="https://d9hhrg4mnvzow.cloudfront.net/lp.uprentcar.com/contrate/6e09406d-livre-de-impostos_1059059000000000000028.png" alt="Ícone sem IOF">
+                        <h3>Não paga IOF</h3>
+                    </div>
+                    <div class="diferencial-card">
+                        <img src="https://d9hhrg4mnvzow.cloudfront.net/lp.uprentcar.com/contrate/eb1d070e-pagar_104o04o000000000000028.png" alt="Ícone sem caução">
+                        <h3>Não cobramos caução</h3>
+                    </div>
+                    <div class="diferencial-card">
+                        <img src="https://d9hhrg4mnvzow.cloudfront.net/lp.uprentcar.com/contrate/b21e5786-ola_104o04o000000000000028.png" alt="Ícone de atendimento em português">
+                        <h3>Atendimento 100% em português</h3>
+                    </div>
+                    <div class="diferencial-card" >
+                        <img style="width: 70px!important;" src="https://d9hhrg4mnvzow.cloudfront.net/lp.uprentcar.com/contrate/c3bfdbc0-sunpass-top-logo-tb_1000000000000000000028.png" alt="Ícone Sunpass">
+                        <h3>Sunpass incluso</h3>
+                    </div>
+                    <div class="diferencial-card">
+                        <img src="https://d9hhrg4mnvzow.cloudfront.net/lp.uprentcar.com/contrate/7c93c914-carro-e-maquina-de-bilhetes-com-placa-de-aviao_105r05r000000000000028.png" alt="Ícone carro no aeroporto">
+                        <h3>Carro estacionado no aeroporto</h3>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="depoimentos">
+            <div class="container">
+                <h2>O que nossos clientes dizem</h2>
+                </div>
+        </section>
+        
+        <section class="contato">
+            <div class="container">
+                <div class="form-box">
+                    <h3>Faça agora sua reserva</h3>
+                    <form id="reservation-form" action="#" method="post">
+                        <div class="form-group">
+                            <label for="nome">Nome *</label>
+                            <input type="text" id="nome" name="nome" placeholder="Digite seu nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone *</label>
+                            <input type="tel" id="telefone" name="telefone" placeholder="Digite seu WhatsApp" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">Email *</label>
+                            <input type="email" id="email" name="email" placeholder="Digite seu melhor email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="local">Local de Retirada *</label>
+                            <select id="local" name="local_retirada" required>
+                                <option value="orlando">Orlando</option>
+                                <option value="miami">Miami</option>
+                                <option value="brasil">Brasil</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" id="aceite" name="aceite" required>
+                            <label for="aceite">Estou ciente que busco a locação de veículo nos Estados Unidos.</label>
+                        </div>
+                        <a href="#" id="reserve-button" class="cta-button">RESERVAR</a>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="container">
+            <p>UP Rent a Car - Todos os direitos reservados 2024</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('reserve-button').addEventListener('click', function(e) {
+            e.preventDefault();
+            const form = document.getElementById('reservation-form');
+            if (form.checkValidity()) {
+                const formData = new FormData(form);
+                let message = 'Olá, gostaria de alugar um carro!\n';
+                message += 'Nome: ' + formData.get('nome') + '\n';
+                message += 'Telefone: ' + formData.get('telefone') + '\n';
+                message += 'Email: ' + formData.get('email') + '\n';
+                message += 'Local de Retirada: ' + formData.get('local_retirada') + '\n';
+                const whatsappUrl = 'https://api.whatsapp.com/send?phone=13216100447&text=' + encodeURIComponent(message);
+                window.open(whatsappUrl, '_blank');
+            } else {
+                alert('Por favor, preencha todos os campos obrigatórios.');
+            }
+        });
+    </script>
+
+</body>
+</html>
