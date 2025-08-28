@@ -154,6 +154,31 @@
             text-align: center;
         }
 
+        .depoimentos-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            text-align: center;
+        }
+
+        .depoimento-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 30px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .depoimento-card p {
+            font-style: italic;
+            margin-bottom: 15px;
+            color: var(--text-color);
+        }
+
+        .depoimento-card cite {
+            font-weight: 600;
+            color: var(--primary-color);
+        }
+
         /* Form Section */
         .contato {
             padding: 80px 0;
@@ -293,7 +318,25 @@
         <section class="depoimentos">
             <div class="container">
                 <h2>O que nossos clientes dizem</h2>
+                <div class="depoimentos-grid">
+                    <div class="depoimento-card">
+                        <p>"Excelente serviço! O carro estava limpo e pronto na hora. Atendimento em português facilitou tudo."</p>
+                        <cite>- João Silva, São Paulo</cite>
+                    </div>
+                    <div class="depoimento-card">
+                        <p>"Não paguei IOF e não precisei de caução. Melhor locadora que já usei na Flórida."</p>
+                        <cite>- Maria Oliveira, Rio de Janeiro</cite>
+                    </div>
+                    <div class="depoimento-card">
+                        <p>"Retirei o carro direto no aeroporto sem filas. Recomendo para todos os brasileiros."</p>
+                        <cite>- Carlos Pereira, Belo Horizonte</cite>
+                    </div>
+                    <div class="depoimento-card">
+                        <p>"Sunpass incluso e atendimento 100% em português. Perfeito para minha viagem a Orlando."</p>
+                        <cite>- Ana Costa, Curitiba</cite>
+                    </div>
                 </div>
+            </div>
         </section>
         
         <section class="contato">
