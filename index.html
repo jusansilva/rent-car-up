@@ -22,6 +22,15 @@
             --white: #fff;
         }
 
+        * {
+            box-sizing: border-box;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
         body {
             font-family: 'Poppins', sans-serif;
             color: var(--text-color);
@@ -46,8 +55,7 @@
 
         .hero-image {
             flex: 0 0 45%;
-            background: url('header.png') no-repeat center center/cover;
-            background-size: 100%;
+            background: url('header.png') no-repeat center center/contain;
             position: relative;
         }
 
@@ -268,7 +276,24 @@
         /* Responsive Design */
         @media (max-width: 768px) {
             .hero {
+                flex-direction: column;
+                min-height: auto;
                 padding: 100px 0;
+            }
+
+            .hero-logo {
+                top: -45px;
+            }
+
+            .hero-image {
+                flex: none;
+                height: 300px;
+                background-size: contain;
+                background-position: center;
+            }
+
+            .hero-content {
+                padding: 40px 20px;
             }
 
             .hero h1 {
@@ -278,29 +303,92 @@
             .hero p {
                 font-size: 1em;
             }
+
+            .categorias h2 {
+                font-size: 2em;
+            }
+
+            .carousel {
+                height: 600px;
+            }
+
+            .carousel-item img {
+                max-width: 80%;
+            }
+
+            .carousel-item h1 {
+                font-size: 1.5em;
+            }
+
+            .carousel-item h3 {
+                font-size: 1.2em;
+            }
+
+            .carousel-item p {
+                font-size: 0.9em;
+            }
+
+            .diferenciais-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .depoimentos-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .form-box {
+                padding: 20px;
+            }
+
+            .form-box h3 {
+                font-size: 1.5em;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 1.5em;
+            }
+
+            .hero p {
+                font-size: 0.9em;
+            }
+
+            .carousel {
+                height: 500px;
+            }
+
+            .carousel-item img {
+                max-width: 90%;
+            }
+
+            .diferencial-card,
+            .depoimento-card {
+                padding: 20px;
+            }
         }
 
         /* Categorias Section */
         .categorias {
-            padding: 70px 0;
+            padding: 80px 0;
             text-align: center;
         }
 
         .categorias h2 {
             font-size: 2.5em;
             font-weight: 700;
-            margin-bottom: 20px;
-            margin-top: 10p;
-        }
-
-        .categorias h1 {
-            margin-bottom: 20px;
+            margin-bottom: 40px;
         }
 
         .carousel {
             position: relative;
-            height: 800px;
+            height: 700px; /* Aumentar altura para acomodar imagens maiores */
             overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .carousel-item {
@@ -311,27 +399,110 @@
             opacity: 0;
             transition: opacity 1s ease-in-out;
             text-align: center;
+            padding: 20px;
         }
 
         .carousel-item img {
-            max-width: 500px;
+            max-width: 350px; /* Aumentar tamanho da imagem para desktop */
             height: auto;
             margin-bottom: 20px;
         }
 
-        .carousel-item h3 {
-            font-size: 1.5em;
-            font-weight: 600;
+        .carousel-item h1 {
+            font-size: 1.8em;
+            font-weight: 700;
             margin-bottom: 10px;
+        }
+
+        .carousel-item h3 {
+            font-size: 1.2em;
+            font-weight: 600;
+            margin-bottom: 15px;
         }
 
         .carousel-item p {
             font-size: 1em;
             color: var(--text-color);
+            max-width: 400px;
+            margin: 0 auto;
         }
 
         .carousel-item.active {
             opacity: 1;
+        }
+
+        /* Controles do Carousel */
+        .carousel-controls {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            display: flex;
+            gap: 10px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.5);
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .carousel-dot.active {
+            background-color: var(--primary-color);
+        }
+
+        /* Responsive Design para Categorias */
+        @media (max-width: 768px) {
+            .categorias h2 {
+                font-size: 2em;
+            }
+
+            .carousel {
+                height: 550px;
+            }
+
+            .carousel-item img {
+                max-width: 200px;
+            }
+
+            .carousel-item h1 {
+                font-size: 1.5em;
+            }
+
+            .carousel-item h3 {
+                font-size: 1em;
+            }
+
+            .carousel-item p {
+                font-size: 0.9em;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel {
+                height: 500px;
+            }
+
+            .carousel-item img {
+                max-width: 180px;
+            }
+
+            .carousel-item h1 {
+                font-size: 1.3em;
+            }
+
+            .carousel-item h3 {
+                font-size: 0.9em;
+            }
+
+            .carousel-item p {
+                font-size: 0.8em;
+                max-width: 280px;
+            }
         }
     </style>
 </head>
@@ -445,6 +616,14 @@ um espírito aventureiro.</p>
                     <div class="depoimento-card">
                         <p>"Sunpass incluso e atendimento 100% em português. Perfeito para minha viagem a Orlando."</p>
                         <cite>- Ana Costa, Curitiba</cite>
+                    </div>
+                    <div class="depoimento-card">
+                        <p>"Processo rápido e sem complicações. O carro era exatamente o que eu esperava. Voltarei a usar."</p>
+                        <cite>- Pedro Santos, Porto Alegre</cite>
+                    </div>
+                    <div class="depoimento-card">
+                        <p>"Equipe muito atenciosa e profissional. Tudo correu perfeitamente, desde a reserva até a devolução."</p>
+                        <cite>- Luciana Ferreira, Salvador</cite>
                     </div>
                 </div>
             </div>
