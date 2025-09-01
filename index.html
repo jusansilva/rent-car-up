@@ -278,7 +278,7 @@
             .hero {
                 flex-direction: column;
                 min-height: auto;
-                padding: 100px 0;
+                padding: 20px 0;
             }
 
             .hero-logo {
@@ -290,10 +290,12 @@
                 height: 300px;
                 background-size: contain;
                 background-position: center;
+                order: 2;
             }
 
             .hero-content {
                 padding: 40px 20px;
+                order: 1;
             }
 
             .hero h1 {
@@ -344,6 +346,23 @@
 
             .form-box h3 {
                 font-size: 1.5em;
+            }
+
+            .hero-logo {
+                position: fixed;
+                top: 10px;
+                left: 20px;
+                max-width: 120px;
+                z-index: 10;
+            }
+
+            .hero-image {
+                flex: none;
+                width: 100vw;
+                height: 300px;
+                background-size: cover;
+                background-position: center;
+                order: 2;
             }
         }
 
@@ -518,7 +537,7 @@
                 <h1>Alugue seu carro com <br>a locadora número <br> <span>1</span> <br>dos brasileiros na Flórida</h1>
                 <p>A UP Rent a Car preparou para você o melhor serviço de aluguel de carros para sua viagem. <br>
                     Modelos a partir de <span class="price-highlight">$29/dia.</span></p>
-                <a href="https://api.whatsapp.com/send?phone=13216100447&text=Olá, gostaria de alugar um carro!"
+                <a href="https://api.whatsapp.com/send?phone=13216100447&text=Oi, cadastrei agora na Land Page e desejo mais informações!"
                     target="_blank" class="cta-button">QUERO RESERVAR MEU CARRO</a>
             </div>
         </div>
@@ -690,7 +709,7 @@ um espírito aventureiro.</p>
             const form = document.getElementById('reservation-form');
             if (form.checkValidity()) {
                 const formData = new FormData(form);
-                let message = 'Olá, gostaria de alugar um carro!\n';
+                let message = 'Oi, cadastrei agora na Land Page e desejo mais informações!\n';
                 message += 'Nome: ' + formData.get('nome') + '\n';
                 message += 'Telefone: ' + formData.get('telefone') + '\n';
                 message += 'Email: ' + formData.get('email') + '\n';
