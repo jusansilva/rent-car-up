@@ -589,6 +589,44 @@
                 font-size: 1em;
             }
         }
+
+        /* Estatísticas Section */
+        .estatisticas {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+            text-align: center;
+        }
+
+        .estatisticas-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin-bottom: 40px;
+        }
+
+        .estatistica-card {
+            background-color: var(--white);
+            border-radius: 15px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .estatistica-number {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .estatistica-title {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: var(--text-color);
+        }
+
+        .estatisticas-content p {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+        }
     </style>
 </head>
 
@@ -661,6 +699,33 @@ um espírito aventureiro.</p>
                         <video src="video.MOV" autoplay muted loop controls style="max-width: 100%; border-radius: 15px; max-height: 100vh;"></video>
                         <a href="https://api.whatsapp.com/send?phone=13216100447&text=Saiba%20mais%20sobre%20nossos%20serviços!" target="_blank" class="cta-button video-button">SAIBA MAIS</a>
                     </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="estatisticas">
+            <div class="container">
+                <div class="estatisticas-grid">
+                    <div class="estatistica-card">
+                        <div class="estatistica-number">9<span>+</span></div>
+                        <div class="estatistica-title">Anos no Mercado</div>
+                    </div>
+                    <div class="estatistica-card">
+                        <div class="estatistica-number">90.000<span>+</span></div>
+                        <div class="estatistica-title">Clientes atendidos</div>
+                    </div>
+                    <div class="estatistica-card">
+                        <div class="estatistica-number">100<span>%</span></div>
+                        <div class="estatistica-title">Suporte em Portugês</div>
+                    </div>
+                    <div class="estatistica-card">
+                        <div class="estatistica-number">Top 1</div>
+                        <div class="estatistica-title">Escolhas dos Brasileiros</div>
+                    </div>
+                </div>
+                <div class="estatisticas-content">
+                    <p>Alugue seu carro com a locadora número 1 dos Brasileiros que viajam para Flórida.</p>
+                    <a href="https://bit.ly/4msYAwb" target="_blank" class="cta-button">QUERO RESERVAR MEU CARRO</a>
                 </div>
             </div>
         </section>
