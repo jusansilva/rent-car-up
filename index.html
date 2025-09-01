@@ -523,6 +523,72 @@
                 max-width: 280px;
             }
         }
+
+        /* Sobre Nós Section */
+        .sobre-nos {
+            padding: 80px 0;
+            background-color: var(--light-bg);
+        }
+
+        .sobre-nos h2 {
+            text-align: center;
+            font-size: 2.5em;
+            font-weight: 700;
+            margin-bottom: 40px;
+        }
+
+        .sobre-nos-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .sobre-nos-text {
+            flex: 1;
+        }
+
+        .sobre-nos-text p {
+            font-size: 1.1em;
+            line-height: 1.6;
+            margin-bottom: 20px;
+        }
+
+        .sobre-nos-image {
+            flex: 1;
+            text-align: center;
+            position: relative;
+        }
+
+        .sobre-nos-image video {
+            width: 100%;
+            height: auto;
+            border-radius: 15px;
+            object-fit: cover;
+            max-height: 100vh;
+        }
+
+        .video-button {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            z-index: 2;
+        }
+
+        @media (max-width: 768px) {
+            .sobre-nos-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .sobre-nos h2 {
+                font-size: 2em;
+            }
+
+            .sobre-nos-text p {
+                font-size: 1em;
+            }
+        }
     </style>
 </head>
 
@@ -578,6 +644,22 @@ Porsche.</p>
                         <h3>Modelo: JEEP WRANGLER</h3>
                         <p>O Jeep Wrangler é a escolha definitiva para quem busca um veículo que com um design icônico, capacidade imbatível e
 um espírito aventureiro.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="sobre-nos">
+            <div class="container">
+                <h2>Sobre a UP Rent a Car</h2>
+                <div class="sobre-nos-content">
+                    <div class="sobre-nos-text">
+                        <p>A UP Rent a Car é a locadora número 1 para brasileiros na Flórida, oferecendo serviços de aluguel de carros sem filas, sem IOF e sem caução. Nossa missão é proporcionar uma experiência de viagem excepcional, com atendimento 100% em português e carros de alta qualidade estacionados diretamente no aeroporto.</p>
+                        <p>Com anos de experiência no mercado, nos dedicamos a tornar sua viagem à Flórida mais confortável e econômica. Escolha a UP Rent a Car e desfrute do melhor em locação de veículos.</p>
+                    </div>
+                    <div class="sobre-nos-image">
+                        <video src="video.MOV" autoplay muted loop controls style="max-width: 100%; border-radius: 15px; max-height: 100vh;"></video>
+                        <a href="https://api.whatsapp.com/send?phone=13216100447&text=Saiba%20mais%20sobre%20nossos%20serviços!" target="_blank" class="cta-button video-button">SAIBA MAIS</a>
                     </div>
                 </div>
             </div>
