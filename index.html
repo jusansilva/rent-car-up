@@ -568,7 +568,7 @@
 
         .video-button {
             position: absolute;
-            bottom: 20px;
+            top: 20px;
             right: 20px;
             z-index: 2;
         }
@@ -624,6 +624,42 @@
         .estatisticas-content p {
             font-size: 1.2em;
             margin-bottom: 20px;
+        }
+
+        /* Depoimentos Carousel */
+        .carousel-depoimentos {
+            position: relative;
+            overflow: hidden;
+            width: 100%;
+        }
+
+        .carousel-wrapper {
+            display: flex;
+            overflow: hidden;
+        }
+
+        .carousel-track {
+            display: flex;
+            transition: transform 0.5s ease;
+        }
+
+        .carousel-track img {
+            width: 25%; /* 4 imagens por vez */
+            height: auto;
+            border-radius: 15px;
+            margin: 0 10px;
+        }
+
+        @media (max-width: 768px) {
+            .carousel-track img {
+                width: 50%; /* 2 imagens por vez no mobile */
+            }
+        }
+
+        @media (max-width: 480px) {
+            .carousel-track img {
+                width: 100%; /* 1 imagem por vez no mobile pequeno */
+            }
         }
     </style>
 </head>
@@ -694,13 +730,11 @@
                 <h2>Sobre a UP Rent a Car</h2>
                 <div class="sobre-nos-content">
                     <div class="sobre-nos-text">
-                        <p>A UP Rent a Car é a locadora número 1 para brasileiros na Flórida, oferecendo serviços de
-                            aluguel de carros sem filas, sem IOF e sem caução. Nossa missão é proporcionar uma
-                            experiência de viagem excepcional, com atendimento 100% em português e carros de alta
-                            qualidade estacionados diretamente no aeroporto.</p>
-                        <p>Com anos de experiência no mercado, nos dedicamos a tornar sua viagem à Flórida mais
-                            confortável e econômica. Escolha a UP Rent a Car e desfrute do melhor em locação de
-                            veículos.</p>
+                        <p>UP Rent a Car – A escolha número 01 dos brasileiros na Flórida</p>
+                        <p>Na UP Rent a Car, sua experiência vem em primeiro lugar. Somos a locadora preferida dos brasileiros que visitam a Flórida, oferecendo aluguel de carros sem filas, sem IOF, sem caução e com atendimento 100% em português.</p>
+                        <p>Com anos de experiência no mercado, entendemos as necessidades de quem viaja para Orlando, Miami e toda a região, garantindo conforto, praticidade e economia em cada detalhe.</p>
+                        <p>Seus carros de alta qualidade já estarão prontos e estacionados no aeroporto, para que você aproveite cada momento da sua viagem sem preocupações.</p>
+                        <p>Escolha a UP Rent a Car e descubra como é simples dirigir com tranquilidade nas terras mágicas da Flórida.</p>
                     </div>
                     <div class="sobre-nos-image">
                         <video src="video.MOV" autoplay muted loop controls preload="auto" style="max-width: 100%; border-radius: 15px; max-height: 100vh;"></video>
@@ -773,34 +807,18 @@
 
         <section class="depoimentos">
             <div class="container">
-                <h2>O que nossos clientes dizem</h2>
-                <div class="depoimentos-grid">
-                    <div class="depoimento-card">
-                        <p>"Excelente serviço! O carro estava limpo e pronto na hora. Atendimento em português facilitou
-                            tudo."</p>
-                        <cite>- João Silva, São Paulo</cite>
-                    </div>
-                    <div class="depoimento-card">
-                        <p>"Não paguei IOF e não precisei de caução. Melhor locadora que já usei na Flórida."</p>
-                        <cite>- Maria Oliveira, Rio de Janeiro</cite>
-                    </div>
-                    <div class="depoimento-card">
-                        <p>"Retirei o carro direto no aeroporto sem filas. Recomendo para todos os brasileiros."</p>
-                        <cite>- Carlos Pereira, Belo Horizonte</cite>
-                    </div>
-                    <div class="depoimento-card">
-                        <p>"Sunpass incluso e atendimento 100% em português. Perfeito para minha viagem a Orlando."</p>
-                        <cite>- Ana Costa, Curitiba</cite>
-                    </div>
-                    <div class="depoimento-card">
-                        <p>"Processo rápido e sem complicações. O carro era exatamente o que eu esperava. Voltarei a
-                            usar."</p>
-                        <cite>- Pedro Santos, Porto Alegre</cite>
-                    </div>
-                    <div class="depoimento-card">
-                        <p>"Equipe muito atenciosa e profissional. Tudo correu perfeitamente, desde a reserva até a
-                            devolução."</p>
-                        <cite>- Luciana Ferreira, Salvador</cite>
+                <h2>Nossos clientes</h2>
+                <div class="carousel-depoimentos">
+                    <div class="carousel-wrapper">
+                        <div class="carousel-track">
+                            <img src="/clientes/cliente1.png" alt="Cliente 1">
+                            <img src="/clientes/cliente2.png" alt="Cliente 2">
+                            <img src="/clientes/cliente3.png" alt="Cliente 3">
+                            <img src="/clientes/cliente4.png" alt="Cliente 4">
+                            <img src="/clientes/cliente5.png" alt="Cliente 5">
+                            <img src="/clientes/cliente1.png" alt="Cliente 6">
+                            <!-- Adicione mais imagens conforme necessário -->
+                        </div>
                     </div>
                 </div>
             </div>
@@ -859,6 +877,24 @@
                 current = (current + 1) % items.length;
                 items[current].classList.add('active');
             }, 3000);
+        }
+
+        // Carousel functionality for depoimentos
+        const track = document.querySelector('.carousel-track');
+        if (track) {
+            const images = track.querySelectorAll('img');
+            const imageWidth = images[0].offsetWidth + 20; // Largura da imagem + margem
+            let currentIndex = 0;
+
+            function moveCarousel() {
+                currentIndex++;
+                if (currentIndex >= images.length - 3) { // Ajustar para 4 imagens visíveis
+                    currentIndex = 0;
+                }
+                track.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
+            }
+
+            setInterval(moveCarousel, 3000); // Muda a cada 3 segundos
         }
 
         // Existing form script
