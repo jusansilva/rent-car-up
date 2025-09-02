@@ -361,6 +361,7 @@
         @media (max-width: 480px) {
             .hero h1 {
                 font-size: 1.5em;
+                
             }
 
             .hero p {
@@ -373,6 +374,7 @@
 
             .carousel-item img {
                 max-width: 220px;
+                
             }
 
             .categorias {
@@ -512,6 +514,7 @@
 
             .carousel-item h1 {
                 font-size: 1.3em;
+                margin-top: auto;
             }
 
             .carousel-item h3 {
@@ -653,13 +656,13 @@
 
         @media (max-width: 768px) {
             .carousel-track img {
-                width: 50%; /* 2 imagens por vez no mobile */
+                width: 100%; /* 1 imagem por vez no mobile */
             }
         }
 
         @media (max-width: 480px) {
             .carousel-track img {
-                width: 100%; /* 1 imagem por vez no mobile pequeno */
+                width: 100%; /* 1 imagem por vez no mobile */
             }
         }
     </style>
@@ -817,8 +820,11 @@
                             <img src="clientes/cliente-3.png" alt="Cliente 3">
                             <img src="clientes/cliente-4.png" alt="Cliente 4">
                             <img src="clientes/cliente-5.png" alt="Cliente 5">
-                            <img src="clientes/cliente-1.png" alt="Cliente 6">
-                            <!-- Adicione mais imagens conforme necessário -->
+                            <img src="clientes/cliente-1.png" alt="Cliente 1">
+                            <img src="clientes/cliente-2.png" alt="Cliente 2">
+                            <img src="clientes/cliente-3.png" alt="Cliente 3">
+                            <img src="clientes/cliente-4.png" alt="Cliente 4">
+                            <img src="clientes/cliente-5.png" alt="Cliente 5">
                         </div>
                     </div>
                 </div>
@@ -884,15 +890,22 @@
         const track = document.querySelector('.carousel-track');
         if (track) {
             const images = track.querySelectorAll('img');
-            const imageWidth = images[0].offsetWidth + 20; // Largura da imagem + margem
             let currentIndex = 0;
+            const totalImages = images.length / 2; // Metade, pois duplicamos
 
             function moveCarousel() {
                 currentIndex++;
-                if (currentIndex >= images.length - 3) { // Ajustar para 4 imagens visíveis
+                if (currentIndex >= totalImages) {
                     currentIndex = 0;
+                    track.style.transition = 'none';
+                    track.style.transform = `translateX(0)`;
+                    setTimeout(() => {
+                        track.style.transition = 'transform 0.5s ease';
+                    }, 50);
+                } else {
+                    const imageWidth = images[0].offsetWidth + 20;
+                    track.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
                 }
-                track.style.transform = `translateX(-${currentIndex * imageWidth}px)`;
             }
 
             setInterval(moveCarousel, 3000); // Muda a cada 3 segundos
