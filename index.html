@@ -216,31 +216,17 @@
             color: var(--white);
             padding: 80px 0;
             text-align: center;
+            height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
-        .depoimentos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            text-align: center;
-        }
-
-        .depoimento-card {
-            background-color: var(--white);
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-        }
-
-        .depoimento-card p {
-            font-style: italic;
-            margin-bottom: 15px;
-            color: var(--text-color);
-        }
-
-        .depoimento-card cite {
-            font-weight: 600;
-            color: var(--primary-color);
+        @media (max-width: 768px) {
+            .depoimentos {
+                height: 100vh;
+                padding: 40px 0;
+            }
         }
 
         /* Form Section */
@@ -333,7 +319,7 @@
             .hero-image {
                 flex: none;
                 width: 100vw;
-                height: 500px;
+                height: 100vh;
                 background-size: cover;
                 background-position: center;
                 order: 2;
@@ -348,7 +334,7 @@
             }
 
             .carousel-track img {
-                height: 100vh;
+                height: 50vh;
                 width: auto;
                 object-fit: cover;
             }
@@ -418,7 +404,7 @@
             }
 
             .carousel-depoimentos {
-                height: 100vh;
+                height: 50vh;
                 display: flex;
                 align-items: center;
                 justify-content: center;
@@ -434,7 +420,7 @@
             }
 
             .carousel-track img {
-                height: 100vh;
+                height: 100%;
                 width: auto;
                 object-fit: cover;
             }
@@ -1059,4 +1045,3 @@
 </body>
 
 </html>
-``` 
