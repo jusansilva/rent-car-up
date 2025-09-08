@@ -1935,12 +1935,20 @@
                 <div class="sobre-grid">
                     <div>
                         <h2>Sobre a UP Rent a Car</h2>
-                        <p>Somos especialistas em atender brasileiros que buscam praticidade, confiança e suporte real
-                            em
-                            Orlando. Eliminamos burocracias, filas e custos ocultos que frustram a experiência de
-                            viagem.</p>
-                        <p>Nosso atendimento 100% em português e a entrega direta no aeroporto garantem que você saia
-                            dirigindo com tranquilidade.</p>
+                        <p>UP Rent a Car – A escolha número 01 dos brasileiros na Flórida</p>
+
+                        <p>Na UP Rent a Car, sua experiência vem em primeiro lugar. Somos a locadora preferida dos
+                            brasileiros que visitam a Flórida, oferecendo aluguel de carros sem filas, sem IOF, sem
+                            caução e com atendimento 100% em português.</p>
+
+                        <p>Com anos de experiência no mercado, entendemos as necessidades de quem viaja para Orlando,
+                            Miami e toda a região, garantindo conforto, praticidade e economia em cada detalhe.</p>
+
+                        <p>Seus carros de alta qualidade já estarão prontos e estacionados no aeroporto, para que você
+                            aproveite cada momento da sua viagem sem preocupações.</p>
+
+                        Escolha a UP Rent a Car e descubra como é simples dirigir com tranquilidade nas terras mágicas
+                        da Flórida.</p>
                         <a href="#form-reserva" class="btn">QUERO RESERVAR MEU CARRO</a>
                     </div>
                     <div>
@@ -2090,7 +2098,7 @@
             const form = document.getElementById('form-reserva');
             if (!form) return;
 
-            const DESTINO_WHATS = '13216100447'; 
+            const DESTINO_WHATS = '13216100447';
 
             form.addEventListener('submit', function (e) {
                 e.preventDefault();
@@ -2115,7 +2123,7 @@
 
                 const url = `https://wa.me/${DESTINO_WHATS}?text=${encodeURIComponent(texto)}`;
 
-                window.open(url, '_blank'); 
+                window.open(url, '_blank');
                 form.reset();
             });
         })();
@@ -2232,6 +2240,24 @@
             const depoimentosTrack = document.querySelector('.track-fotos');
             if (!depoimentosTrack) return;
             // continua usando CSS animation, então nada JS obrigatório aqui.
+        })();
+
+        /* ====== CTAs: enviar direto para WhatsApp com mensagem fixa ====== */
+        (function initCTAsWhats() {
+            const DESTINO_WHATS = '13216100447'; 
+            const mensagem = "Oi, cadastrei agora na Land Page e desejo mais informações!";
+            const seletor = 'a.btn, a.cta-button';
+
+            document.querySelectorAll(seletor).forEach(a => {
+                const txt = (a.textContent || '').toLowerCase().trim();
+                if (txt.includes('QUERO RESERVAR MEU CARRO') || txt.includes('RESERVAR AGORA')) {
+                    a.addEventListener('click', function (e) {
+                        e.preventDefault();
+                        const url = `https://wa.me/${DESTINO_WHATS}?text=${encodeURIComponent(mensagem)}`;
+                        window.open(url, '_blank');
+                    }, { once: false });
+                }
+            });
         })();
     </script>
 
