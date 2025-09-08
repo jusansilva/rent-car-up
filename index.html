@@ -1023,11 +1023,11 @@
             line-height: 1.3;
         }
 
-        form# .form-group {
+        form#form-reserva .form-group {
             margin-bottom: 16px;
         }
 
-        form# label {
+        form#form-reserva label {
             font-size: .8rem;
             font-weight: 600;
             display: block;
@@ -1035,7 +1035,7 @@
             letter-spacing: .5px;
         }
 
-        form# input {
+        form#form-reserva input {
             width: 100%;
             padding: 14px 14px;
             border: 1px solid #dadada;
@@ -1046,7 +1046,7 @@
             background: #fafafa;
         }
 
-        form# input:focus {
+        form#form-reserva input:focus {
             border-color: var(--primary-color);
             background: #fff;
             box-shadow: 0 0 0 3px rgba(255, 74, 1, .15);
@@ -2046,54 +2046,75 @@
             setInterval(moveCarousel, 3000); // Muda a cada 3 segundos
         }
 
-        /* ========= CARROS CAROUSEL INTERATIVO ========= */
-        const trackC = document.getElementById('carrosTrack');
-        const dotsContainer = document.getElementById('carrosDots');
-        const prevBtn = document.querySelector('.carros-nav-btn.prev');
-        const nextBtn = document.querySelector('.carros-nav-btn.next');
+        (() => {
+            const carrosTrack = document.getElementById('carrosTrack');
+            const dotsContainer = document.getElementById('carrosDots');
+            const prevBtn = document.querySelector('.carros-nav-btn.prev');
+            const nextBtn = document.querySelector('.carros-nav-btn.next');
+            if (!carrosTrack) return;
 
-        if (trackC) {
-            const cards = Array.from(trackC.children);
-            const visible = Math.floor(window.innerWidth < 640 ? 1 : window.innerWidth < 980 ? 2 : 3);
             let index = 0;
+            const GAP = 28;
 
-            // criar dots
-            const totalSlides = Math.ceil(cards.length / visible);
-            for (let i = 0; i < totalSlides; i++) {
-                const b = document.createElement('button');
-                if (i === 0) b.classList.add('active');
-                b.addEventListener('click', () => goTo(i));
-                dotsContainer.appendChild(b);
+            function visible() {
+                if (innerWidth < 640) return 1;
+                if (innerWidth < 980) return 2;
+                return 3;
             }
-
+            function totalSlides() {
+                return Math.ceil(carrosTrack.children.length / visible());
+            }
+            function cardW() {
+                return carrosTrack.children[0].getBoundingClientRect().width;
+            }
+            function buildDots() {
+                dotsContainer.innerHTML = '';
+                for (let i = 0; i < totalSlides(); i++) {
+                    const b = document.createElement('button');
+                    if (i === 0) b.classList.add('active');
+                    b.addEventListener('click', () => goTo(i));
+                    dotsContainer.appendChild(b);
+                }
+            }
             function updateDots() {
-                [...dotsContainer.children].forEach((d, i) => {
-                    d.classList.toggle('active', i === index);
-                });
+                [...dotsContainer.children].forEach((d, i) =>
+                    d.classList.toggle('active', i === index)
+                );
             }
-
             function goTo(i) {
-                index = (i + totalSlides) % totalSlides;
-                const move = index * (cards[0].getBoundingClientRect().width + 28) * visible;
-                track.style.transform = `translateX(-${move}px)`;
+                index = (i + totalSlides()) % totalSlides();
+                const offset = index * ((cardW() + GAP) * visible());
+                carrosTrack.style.transform = `translateX(-${offset}px)`;
                 updateDots();
             }
+            function next() { goTo(index + 1); }
+            function prev() { goTo(index - 1); }
 
-            function next() {
-                goTo(index + 1);
-            }
-
-            function prev() {
-                goTo(index - 1);
-            }
+            buildDots();
+            goTo(0);
 
             nextBtn?.addEventListener('click', next);
             prevBtn?.addEventListener('click', prev);
-            window.addEventListener('resize', () => location.reload());
 
-            // auto
-            setInterval(next, 5000);
-        }
+            let auto = setInterval(next, 5000);
+            function resetAuto() {
+                clearInterval(auto);
+                auto = setInterval(next, 5000);
+            }
+            nextBtn?.addEventListener('click', resetAuto);
+            prevBtn?.addEventListener('click', resetAuto);
+
+            let resizeT;
+            addEventListener('resize', () => {
+                clearTimeout(resizeT);
+                resizeT = setTimeout(() => {
+                    buildDots();
+                    index = 0;
+                    carrosTrack.style.transform = 'translateX(0)';
+                    updateDots();
+                }, 180);
+            });
+        })();
 
         /* ========= FORM SUBMISSÃO (ANCORA / MOCK) ========= */
         (function initFormWhats() {
