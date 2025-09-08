@@ -2249,7 +2249,7 @@
             const seletor = 'a.btn, a.cta-button';
 
             document.querySelectorAll(seletor).forEach(a => {
-                const txt = (a.textContent || '').toLowerCase().trim();
+                const txt = (a.textContent || '').toUpperCase().trim();
                 if (txt.includes('QUERO RESERVAR MEU CARRO') || txt.includes('RESERVAR AGORA')) {
                     a.addEventListener('click', function (e) {
                         e.preventDefault();
