@@ -1337,6 +1337,61 @@
             margin: 0 0 16px;
         }
 
+        /* --- Video responsivo (adicionar ao FINAL do <style>) --- */
+        .sobre-nos-video,
+        .sobre-grid video,
+        #sobre video {
+            width: 100%;
+            height: auto;
+            max-height: 70vh;
+            display: block;
+            border-radius: 26px;
+            object-fit: cover;
+            background:#000;
+            box-shadow: 0 14px 38px -12px rgba(0,0,0,.25);
+        }
+
+        /* Caso queira manter proporção fixa e cortar excesso */
+        .video-wrapper {
+            position: relative;
+            width: 100%;
+            aspect-ratio: 16/9;
+            max-height: 80vh;
+            overflow: hidden;
+            border-radius: 26px;
+            box-shadow: 0 14px 38px -12px rgba(0,0,0,.25);
+        }
+        .video-wrapper video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Mobile: limita altura para não empurrar demais o conteúdo */
+        @media (max-width: 768px) {
+            .sobre-grid video,
+            #sobre video,
+            .video-wrapper {
+                max-height: 50vh;
+                border-radius:18px;
+            }
+        }
+
+        /* Muito pequeno */
+        @media (max-width: 480px) {
+            .sobre-grid video,
+            #sobre video,
+            .video-wrapper {
+                max-height: 65vh;
+                
+            }
+            .sobre-text {
+                text-align: center;
+            }
+        }
+
         /* -------- FAQ -------- */
         section#faq {
             padding: 90px 0 80px;
@@ -1768,6 +1823,144 @@
         video {
             max-width: 90%;
             height: auto;
+            margin: auto;
+        }
+
+        /* === VIDEO FORMATO STORY (9:16) === */
+        /* Adicione AO FINAL do <style> para sobrescrever regras anteriores */
+
+        .video-wrapper.story {
+            aspect-ratio: 9 / 16;
+            width: clamp(240px, 30vw, 340px);
+            max-height: 90vh;
+            position: relative;
+            overflow: hidden;
+            border-radius: 28px;
+            box-shadow: 0 14px 38px -12px rgba(0, 0, 0, .25);
+            background:rgba(255, 74, 1, 1);
+        }
+
+        /* Fallback para browsers sem aspect-ratio */
+        @supports not (aspect-ratio: 9 / 16) {
+            .video-wrapper.story {
+                width: 340px;
+                height: 604px; /* 340 * 16/9 ≈ 604 */
+            }
+        }
+
+        .video-wrapper.story video {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* preenche como story */
+            object-position: center;
+            border-radius: inherit;
+        }
+
+        /* Centralizar no grid ao lado do texto */
+        .sobre-grid .video-wrapper.story {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* Mobile: largura cheia mantendo proporção */
+        @media (max-width: 768px) {
+            .video-wrapper.story {
+                width: 100%;
+                max-width: 420px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .video-wrapper.story {
+                max-width: 360px;
+                border-radius:20px;
+            }
+        }
+
+        /* === MOCKUP DE CELULAR AO REDOR DO VÍDEO (STORY) === */
+        /* Adicione no FINAL do <style> */
+
+        .phone-frame.story {
+            position: relative;
+            aspect-ratio: 9 / 16;
+            width: clamp(240px, 30vw, 340px);
+            max-height: 90vh;
+            background: linear-gradient(145deg,#1c1c21,#2b2b31);
+            border: 2px solid #000;
+            border-radius: 46px;
+            padding: 14px 14px 20px; /* espaço para borda + notch */
+            box-shadow:
+                0 18px 40px -12px rgba(0,0,0,.55),
+                0 4px 10px -2px rgba(0,0,0,.4),
+                0 0 0 4px rgba(255,255,255,.05) inset;
+            overflow: hidden;
+        }
+
+        /* Fallback sem aspect-ratio */
+        @supports not (aspect-ratio: 9 / 16) {
+            .phone-frame.story {
+                width: 340px;
+                height: 604px;
+            }
+        }
+
+        /* Tela interna */
+        .phone-frame.story video {
+            width: 100%;
+            height: 100%;
+            border-radius: 32px;
+            object-fit: cover;
+            background: #000;
+            display: block;
+        }
+
+        /* Notch */
+        .phone-frame.story::before {
+            content: "";
+            position: absolute;
+            top: 6px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 42%;
+            height: 20px;
+            background: #000;
+            border-radius: 0 0 18px 18px;
+            box-shadow: 0 2px 4px -1px rgba(255,255,255,.06) inset;
+            z-index: 3;
+        }
+
+        /* Botão lateral (decorativo) */
+        .phone-frame.story::after {
+            content: "";
+            position: absolute;
+            right: -4px;
+            top: 32%;
+            width: 6px;
+            height: 60px;
+            background: #1a1a1d;
+            border-radius: 3px;
+            box-shadow: 0 0 0 1px #000;
+        }
+
+        /* Reflexo sutil */
+        .phone-frame.story .glare {
+            pointer-events: none;
+            position: absolute;
+            inset: 0;
+            background: linear-gradient(120deg,rgba(255,255,255,.12),transparent 40%,rgba(255,255,255,.08) 60%,transparent 75%);
+            mix-blend-mode: screen;
+            opacity: .6;
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .phone-frame.story { width: 100%; max-width: 420px; }
+        }
+        @media (max-width: 480px) {
+            .phone-frame.story { max-width: 360px; border-radius: 40px; }
+            .phone-frame.story video { border-radius: 30px; }
         }
     </style>
 </head>
@@ -1935,7 +2128,7 @@
         <section id="sobre">
             <div class="container">
                 <div class="sobre-grid">
-                    <div>
+                    <div class="sobre-text">
                         <h2>Sobre a UP Rent a Car</h2>
                         <p>UP Rent a Car – A escolha número 01 dos brasileiros na Flórida</p>
 
@@ -1953,9 +2146,8 @@
                         da Flórida.</p>
                         <a href="#" class="btn">QUERO RESERVAR MEU CARRO</a>
                     </div>
-                    <div>
-                        <video src="video.MOV" alt="Equipe UP Rent a Car"
-                            style="width:100%;border-radius:26px;box-shadow:0 14px 38px -12px rgba(0,0,0,.25);"></video>
+                    <div class="video-wrapper story">
+                        <video src="video.mp4" playsinline autoplay muted loop></video>
                     </div>
                 </div>
             </div>
