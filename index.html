@@ -1347,8 +1347,8 @@
             display: block;
             border-radius: 26px;
             object-fit: cover;
-            background:#000;
-            box-shadow: 0 14px 38px -12px rgba(0,0,0,.25);
+            background: #000;
+            box-shadow: 0 14px 38px -12px rgba(0, 0, 0, .25);
         }
 
         /* Caso queira manter proporção fixa e cortar excesso */
@@ -1359,8 +1359,9 @@
             max-height: 80vh;
             overflow: hidden;
             border-radius: 26px;
-            box-shadow: 0 14px 38px -12px rgba(0,0,0,.25);
+            box-shadow: 0 14px 38px -12px rgba(0, 0, 0, .25);
         }
+
         .video-wrapper video {
             position: absolute;
             inset: 0;
@@ -1371,22 +1372,25 @@
 
         /* Mobile: limita altura para não empurrar demais o conteúdo */
         @media (max-width: 768px) {
+
             .sobre-grid video,
             #sobre video,
             .video-wrapper {
                 max-height: 50vh;
-                border-radius:18px;
+                border-radius: 18px;
             }
         }
 
         /* Muito pequeno */
         @media (max-width: 480px) {
+
             .sobre-grid video,
             #sobre video,
             .video-wrapper {
                 max-height: 65vh;
-                
+
             }
+
             .sobre-text {
                 text-align: center;
             }
@@ -1837,14 +1841,15 @@
             overflow: hidden;
             border-radius: 28px;
             box-shadow: 0 14px 38px -12px rgba(0, 0, 0, .25);
-            background:rgba(255, 74, 1, 1);
+            background: rgba(255, 74, 1, 1);
         }
 
         /* Fallback para browsers sem aspect-ratio */
         @supports not (aspect-ratio: 9 / 16) {
             .video-wrapper.story {
                 width: 340px;
-                height: 604px; /* 340 * 16/9 ≈ 604 */
+                height: 604px;
+                /* 340 * 16/9 ≈ 604 */
             }
         }
 
@@ -1853,7 +1858,8 @@
             inset: 0;
             width: 100%;
             height: 100%;
-            object-fit: cover; /* preenche como story */
+            object-fit: cover;
+            /* preenche como story */
             object-position: center;
             border-radius: inherit;
         }
@@ -1875,7 +1881,7 @@
         @media (max-width: 480px) {
             .video-wrapper.story {
                 max-width: 360px;
-                border-radius:20px;
+                border-radius: 20px;
             }
         }
 
@@ -1887,14 +1893,15 @@
             aspect-ratio: 9 / 16;
             width: clamp(240px, 30vw, 340px);
             max-height: 90vh;
-            background: linear-gradient(145deg,#1c1c21,#2b2b31);
+            background: linear-gradient(145deg, #1c1c21, #2b2b31);
             border: 2px solid #000;
             border-radius: 46px;
-            padding: 14px 14px 20px; /* espaço para borda + notch */
+            padding: 14px 14px 20px;
+            /* espaço para borda + notch */
             box-shadow:
-                0 18px 40px -12px rgba(0,0,0,.55),
-                0 4px 10px -2px rgba(0,0,0,.4),
-                0 0 0 4px rgba(255,255,255,.05) inset;
+                0 18px 40px -12px rgba(0, 0, 0, .55),
+                0 4px 10px -2px rgba(0, 0, 0, .4),
+                0 0 0 4px rgba(255, 255, 255, .05) inset;
             overflow: hidden;
         }
 
@@ -1927,7 +1934,7 @@
             height: 20px;
             background: #000;
             border-radius: 0 0 18px 18px;
-            box-shadow: 0 2px 4px -1px rgba(255,255,255,.06) inset;
+            box-shadow: 0 2px 4px -1px rgba(255, 255, 255, .06) inset;
             z-index: 3;
         }
 
@@ -1949,18 +1956,28 @@
             pointer-events: none;
             position: absolute;
             inset: 0;
-            background: linear-gradient(120deg,rgba(255,255,255,.12),transparent 40%,rgba(255,255,255,.08) 60%,transparent 75%);
+            background: linear-gradient(120deg, rgba(255, 255, 255, .12), transparent 40%, rgba(255, 255, 255, .08) 60%, transparent 75%);
             mix-blend-mode: screen;
             opacity: .6;
         }
 
         /* Mobile */
         @media (max-width: 768px) {
-            .phone-frame.story { width: 100%; max-width: 420px; }
+            .phone-frame.story {
+                width: 100%;
+                max-width: 420px;
+            }
         }
+
         @media (max-width: 480px) {
-            .phone-frame.story { max-width: 360px; border-radius: 40px; }
-            .phone-frame.story video { border-radius: 30px; }
+            .phone-frame.story {
+                max-width: 360px;
+                border-radius: 40px;
+            }
+
+            .phone-frame.story video {
+                border-radius: 30px;
+            }
         }
     </style>
 </head>
@@ -2147,7 +2164,7 @@
                         <a href="#" class="btn">QUERO RESERVAR MEU CARRO</a>
                     </div>
                     <div class="video-wrapper story">
-                        <video src="video.mp4" playsinline autoplay muted loop></video>
+                        <video src="video.MOV" playsinline autoplay muted loop controls></video>
                     </div>
                 </div>
             </div>
@@ -2474,6 +2491,12 @@
                 }
             });
         })();
+
+        document.getElementById('videoStory')?.addEventListener('click', function () {
+            if (!this.paused && this.muted) {
+                this.muted = false;
+            }
+        }, { once: true });
     </script>
 
 </body>
